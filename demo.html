@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Yamini Padavala's personal portfolio and resume.">
+  <title>Yamini Padavala | Portfolio</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    :root {
+      --main-color: #2c3e50;
+      --accent: #2980b9;
+      --light-bg: #ffffff;
+      --dark-bg: #1e1e2f;
+      --text-light: #f4f4f4;
+      --text-dark: #2c3e50;
+      --neutral: #7f8c8d;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--light-bg);
+      color: var(--text-dark);
+      line-height: 1.6;
+      transition: all 0.3s ease;
+    }
+
+    .dark-mode {
+      background: var(--dark-bg);
+      color: var(--text-light);
+    }
+
+    header, section, footer {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    header {
+      text-align: center;
+    }
+
+    .profile-pic {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--main-color);
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+    }
+
+    .tagline {
+      font-size: 1.1rem;
+      color: var(--neutral);
+    }
+
+    .dark-mode .tagline {
+      color: #ccc;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      border-left: 6px solid var(--accent);
+      padding-left: 12px;
+      font-weight: 600;
+    }
+
+    .edu-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+    }
+
+    .edu-buttons button {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 12px 20px;
+      font-size: 1rem;
+      border-radius: 6px;
+      transition: 0.3s ease;
+      cursor: pointer;
+    }
+
+    .edu-buttons button:hover {
+      background: #1f618d;
+    }
+
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .skills-list span {
+      background: #ecf0f1;
+      color: var(--main-color);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+    }
+
+    .dark-mode .skills-list span {
+      background: #3a3a4f;
+      color: var(--text-light);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .project-card {
+      background: #f7f9fa;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+    }
+
+    .dark-mode .project-card {
+      background: #3a3a4f;
+      color: var(--text-light);
+    }
+
+    .contact-info {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .contact-info p {
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+
+    .contact-info a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .contact-info a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.95rem;
+      color: #888;
+      padding: 30px 20px;
+    }
+
+    .dark-toggle {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .dark-toggle button {
+      background: #555;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .dark-toggle button:hover {
+      background: #333;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      .section-title {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="myl.png" alt="Photo of Yamini Padavala" class="profile-pic">
+    <h1>Yamini Padavala</h1>
+    <p class="tagline">Aspiring Engineer | Passionate Learner | Tech Enthusiast</p>
+  </header>
+
+  <section>
+    <h2 class="section-title">Education</h2>
+    <div class="edu-buttons">
+      <button onclick="navigateTo('10th')">10th</button>
+      <button onclick="navigateTo('Diploma')">Diploma</button>
+      <button onclick="navigateTo('B.Tech')">B.Tech</button>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">Skills</h2>
+    <div class="skills-list">
+      <span>HTML</span>
+      <span>CSS</span>
+      <span>JavaScript</span>
+      <span>Python</span>
+      <span>Problem Solving</span>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <h3>Portfolio Website</h3>
+        <p>A modern, mobile-friendly website to showcase my skills and projects.</p>
+      </div>
+      <div class="project-card">
+        <h3>Calculator App</h3>
+        <p>A sleek calculator using JavaScript to perform basic arithmetic operations.</p>
+      </div>
+      <div class="project-card">
+        <h3>Student Management System</h3>
+        <p>A Python GUI app using Tkinter to manage student records effectively.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">Contact Me</h2>
+    <div class="contact-info">
+      <p><i class="fas fa-envelope"></i> <a href="mailto:yamisai072@gmail.com">yamisai072@gmail.com</a></p>
+      <p><i class="fas fa-phone"></i> <a href="tel:+919440702996">+91 9440702996</a></p>
+      <p><i class="fab fa-linkedin"></i> <a href="https://linkedin.com/in/yamini-padavala" target="_blank">linkedin.com/in/yamini-padavala</a></p>
+    </div>
+  </section>
+
+  <div class="dark-toggle">
+    <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
+  </div>
+
+  <footer>
+    &copy; 2025 Yamini Padavala. All rights reserved.
+  </footer>
+
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+    }
+
+    function navigateTo(level) {
+      alert("Opening " + level + " certificate...");
+      window.location.href = level.toLowerCase() + ".html";
+    }
+  </script>
+</body>
+</html>

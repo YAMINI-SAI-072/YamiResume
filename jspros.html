@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Project Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #eef1f5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h1 {
+      margin-top: 20px;
+      color: #2c3e50;
+    }
+    nav {
+      display: flex;
+      gap: 10px;
+      margin: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    nav button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      background: #3498db;
+      color: white;
+      cursor: pointer;
+    }
+    nav button.active {
+      background: #2980b9;
+    }
+    .project {
+      display: none;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
+    }
+    .project.active {
+      display: block;
+    }
+    input, button, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button:hover {
+      opacity: 0.9;
+    }
+    ul { padding: 0; list-style: none; }
+    li { background: #f0f0f0; padding: 8px; margin-bottom: 5px; border-radius: 4px; display: flex; justify-content: space-between; }
+  </style>
+</head>
+<body>
+
+<h1>My JavaScript Projects</h1>
+
+<nav>
+  <button onclick="showProject('todo')" class="active">To-Do List</button>
+  <button onclick="showProject('weather')">Weather App</button>
+  <button onclick="showProject('quiz')">Quiz App</button>
+</nav>
+
+<div id="todo" class="project active">
+  <h2>To-Do List</h2>
+  <input type="text" id="taskInput" placeholder="Add a new task">
+  <ul id="taskList"></ul>
+</div>
+
+<div id="weather" class="project">
+  <h2>Weather Dashboard</h2>
+  <input type="text" id="cityInput" placeholder="Enter city name">
+  <button onclick="getWeather()">Get Weather</button>
+  <div id="weatherInfo" style="margin-top: 15px;"></div>
+</div>
+
+<div id="quiz" class="project">
+  <h2>Quiz App</h2>
+  <div id="quiz-container"></div>
+</div>
+
+<script>
+  // Tab Navigation
+  function showProject(id) {
+    document.querySelectorAll('.project').forEach(div => div.classList.remove('active'));
+    document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    document.querySelector(`nav button[onclick="showProject('${id}')"]`).classList.add('active');
+  }
+
+  // To-Do List Logic
+  const taskInput = document.getElementById('taskInput');
+  const taskList = document.getElementById('taskList');
+
+  function loadTasks() {
+    const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    taskList.innerHTML = '';
+    tasks.forEach((task, index) => {
+      const li = document.createElement('li');
+      li.innerHTML = `<span>${task}</span><button onclick="deleteTask(${index})">Delete</button>`;
+      taskList.appendChild(li);
+    });
+  }
+
+  taskInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter' && taskInput.value.trim() !== '') {
+      const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+      tasks.push(taskInput.value.trim());
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+      loadTasks();
+      taskInput.value = '';
+    }
+  });
+
+  function deleteTask(index) {
+    const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    tasks.splice(index, 1);
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+    loadTasks();
+  }
+
+  loadTasks();
+
+  // Weather App Logic
+  async function getWeather() {
+    const city = document.getElementById('cityInput').value.trim();
+    const weatherInfo = document.getElementById('weatherInfo');
+    const apiKey = 'your_api_key_here'; // Replace with real API key
+    if (!city) {
+      weatherInfo.innerHTML = '<p>Please enter a city name.</p>';
+      return;
+    }
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    try {
+      const res = await fetch(url);
+      const data = await res.json();
+      if (data.cod !== 200) {
+        throw new Error(data.message);
+      }
+      weatherInfo.innerHTML = `
+        <p><strong>${data.name}, ${data.sys.country}</strong></p>
+        <p>Temperature: ${data.main.temp}°C</p>
+        <p>Weather: ${data.weather[0].main}</p>
+        <p>Humidity: ${data.main.humidity}%</p>
+      `;
+    } catch (err) {
+      weatherInfo.innerHTML = `<p>Error: ${err.message}</p>`;
+    }
+  }
+
+  // Quiz App Logic
+  const quizContainer = document.getElementById('quiz-container');
+  const quizQuestions = [
+    {
+      question: "What is the capital of France?",
+      options: ["Berlin", "London", "Paris", "Rome"],
+      answer: "Paris"
+    },
+    {
+      question: "What does HTML stand for?",
+      options: ["HyperText Markup Language", "HighText Machine Language", "HyperTool Multi Language", "None of these"],
+      answer: "HyperText Markup Language"
+    },
+    {
+      question: "Which language runs in a web browser?",
+      options: ["Java", "C", "Python", "JavaScript"],
+      answer: "JavaScript"
+    }
+  ];
+
+  let currentQuiz = 0;
+  let score = 0;
+
+  function loadQuiz() {
+    if (currentQuiz >= quizQuestions.length) {
+      quizContainer.innerHTML = `<h3>Your Score: ${score}/${quizQuestions.length}</h3>`;
+      return;
+    }
+    const q = quizQuestions[currentQuiz];
+    quizContainer.innerHTML = `
+      <p><strong>${q.question}</strong></p>
+      ${q.options.map(opt => `<button onclick="checkAnswer('${opt}')">${opt}</button>`).join("<br><br>")}
+    `;
+  }
+
+  function checkAnswer(selected) {
+    const correct = quizQuestions[currentQuiz].answer;
+    if (selected === correct) score++;
+    currentQuiz++;
+    loadQuiz();
+  }
+
+  loadQuiz();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,126 @@
+<html>
+<head>
+  <title>Machine Learning Projects</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(120deg, #f5f7fa, #c3cfe2);
+      color: #2c3e50;
+    }
+
+    header {
+      background-color: #2c3e50;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    header h1 {
+      margin: 0;
+    }
+
+    .project-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .project-card {
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 20px;
+      width: 300px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+
+    .project-card h3 {
+      color: #34495e;
+      margin-top: 0;
+    }
+
+    .project-card p {
+      font-size: 0.95em;
+      color: #555;
+    }
+
+    .project-card a {
+      display: inline-block;
+      margin-top: 10px;
+      background: #3498db;
+      color: white;
+      padding: 10px 15px;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background 0.3s ease;
+    }
+
+    .project-card a:hover {
+      background: #21618c;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #2c3e50;
+      color: white;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>My Machine Learning Projects</h1>
+    <p>Here are some of the ML-based projects I've worked on</p>
+  </header>
+
+  <section class="project-grid">
+    <div class="project-card">
+      <h3>Diabetes Prediction</h3>
+      <p>Used logistic regression and SVM to predict diabetes based on patient data. Trained on PIMA dataset.</p>
+      <a href="diabetes.html">View Project</a>
+    </div>
+
+    <div class="project-card">
+      <h3>Stock Price Prediction</h3>
+      <p>Built an LSTM neural network model using Keras and TensorFlow to forecast stock prices.</p>
+      <a href="stockprice.html">View Project</a>
+    </div>
+
+    <div class="project-card">
+      <h3>Spam Email Classifier</h3>
+      <p>Naive Bayes classifier that classifies emails as spam or not spam based on word frequencies.</p>
+      <a href="spamail.html">View Project</a>
+    </div>
+
+    <div class="project-card">
+      <h3>House Price Prediction</h3>
+      <p>Used multiple linear regression to estimate house prices using features like size, location, and amenities.</p>
+      <a href="houseprice.html">View Project</a>
+    </div>
+
+    <div class="project-card">
+      <h3>Face Mask Detection</h3>
+      <p>Real-time face mask detection using OpenCV and CNNs on live webcam video streams.</p>
+      <a href="facemask.html">View Project</a>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Yamini Padavala | Machine Learning Portfolio
+  </footer>
+
+</body>
+</html>

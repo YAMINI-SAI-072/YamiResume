@@ -1,0 +1,80 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f8f9fa;
+  padding: 2rem;
+  text-align: center;
+}
+
+.container {
+  max-width: 800px;
+  margin: auto;
+}
+
+.cert-btn {
+  margin: 10px;
+  padding: 12px 24px;
+  font-size: 16px;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+ }
+.btn-blue {
+  background-color: #007bff;
+}
+.btn-blue:hover {
+  background-color: #0056b3;
+}
+
+.btn-green {
+  background-color: #28a745;
+}
+.btn-green:hover {
+  background-color: #1e7e34;
+}
+.btn-purple {
+  background-color: #ff0000;
+}
+.btn-purple:hover {
+  background-color: #cc0000; 
+}
+
+.btn-pink {
+  background-color: #ff0072;
+}
+.btn-pink:hover {
+  background-color: F20056; 
+}
+.container {
+  position: relative; /* important to contain the absolute button */
+}
+.back-link {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 24px;
+  font-size: 16px;
+  color: white;
+  background-color: #343a40; 
+  border: none;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.back-link:hover {
+  background-color: #1d2124;
+  text-decoration: none;
+}
+.section-box {
+  border: 4px solid #007bff; /* blue border */
+  border-radius: 10px;
+  padding: 15px;
+  margin: 1px 250;
+  background: #ffffff;/* background */
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}

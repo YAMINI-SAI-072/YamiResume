@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Python Online Compiler</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #74ebd5, #9face6);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 40px 20px;
+      color: #333;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      color: #222;
+    }
+
+    textarea {
+      width: 90%;
+      max-width: 700px;
+      height: 200px;
+      font-size: 16px;
+      padding: 15px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.1);
+      resize: vertical;
+      background-color: #fefefe;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 12px 25px;
+      font-size: 16px;
+      font-weight: bold;
+      background-color: #000;
+      color: #fff;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #fff;
+      color: #000;
+      border: 1px solid #000;
+    }
+
+    #output {
+      margin-top: 25px;
+      width: 90%;
+      max-width: 700px;
+      background: #f8f8f8;
+      border-left: 4px solid #333;
+      padding: 15px;
+      white-space: pre-wrap;
+      font-family: monospace;
+      border-radius: 6px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      min-height: 100px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Python Compiler</h1>
+
+  <textarea id="yourcode" placeholder="Write your Python code here...">print("Hello, world!")</textarea>
+  <br>
+  <button onclick="runCode()">▶ Run Python</button>
+
+  <pre id="output">Output will appear here...</pre>
+
+  <!-- Skulpt CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/skulpt.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/skulpt-stdlib.js"></script>
+
+  <script>
+    function outf(text) {
+      document.getElementById("output").innerText += text;
+    }
+
+    function runCode() {
+      const code = document.getElementById("yourcode").value;
+      const outputEl = document.getElementById("output");
+
+      outputEl.innerText = "⏳ Running...\n";
+
+      Sk.configure({
+        output: outf,
+        read: function (x) {
+          if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined)
+            throw "File not found: '" + x + "'";
+          return Sk.builtinFiles["files"][x];
+        }
+      });
+
+      Sk.misceval.asyncToPromise(() => Sk.importMainWithBody("<stdin>", false, code, true))
+        .then(() => {
+          // finished successfully
+        })
+        .catch(err => {
+          outputEl.innerText = "❌ Error:\n" + err.toString();
+        });
+    }
+  </script>
+
+</body>
+</html>

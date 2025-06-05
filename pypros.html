@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Python Projects</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #83a4d4, #b6fbff);
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+      flex-direction: column;
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: #fff;
+      margin: 30px 0;
+    }
+
+    section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      max-width: 1200px;
+      margin-bottom: 40px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .project-card {
+      background: #fff;
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .project-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+      color: #2d87f0;
+    }
+
+    .project-card p {
+      font-size: 0.95rem;
+      color: #666;
+      margin: 0;
+    }
+
+    @media (max-width: 768px) {
+      section {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>My Python Projects</h1>
+
+  <section>
+    <div class="project-card">
+      <h3>Student Management System</h3>
+      <p>A tool to manage student records using Tkinter and file handling (simulated).</p>
+    </div>
+
+    <div class="project-card">
+      <h3>Web Scraping with Python</h3>
+      <p>Scrape data from websites using BeautifulSoup (simulated).</p>
+    </div>
+  </section>
+
+</body>
+</html>

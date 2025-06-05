@@ -1,0 +1,289 @@
+<html>
+<head>
+  <title>Yamini - Introduction</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Verdana', sans-serif;
+      background-color: #f0f0f0;
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      overflow: hidden;
+      text-align: center;
+      margin: 0;
+      background-image: url('https://www.toptal.com/designers/subtlepatterns/patterns/dark-matter.png');
+      background-repeat: repeat;
+      transition: background-color 0.4s ease, color 0.4s ease;
+    }
+
+    .circle {
+      position: absolute;
+      top: 50px;
+      left: -400px;
+      width: 350px;
+      height: 350px;
+      border-radius: 50%;
+      background-color: #000;
+      background-size: cover;
+      background-position: center;
+      border: 10px solid #fff;
+      opacity: 0;
+      animation: slideInFromLeft 2.5s ease-out forwards;
+      overflow: hidden;
+    }
+
+    .circle::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .circle:hover {
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .dark-mode .circle:hover {
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    }
+
+    @keyframes slideInFromLeft {
+      0% {
+        left: -200px;
+        opacity: 0;
+      }
+      100% {
+        left: -10px;
+        opacity: 1;
+      }
+    }
+
+    .profile-pic {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    .intro-text {
+      opacity: 0;
+      font-size: 2rem;
+      font-weight: bold;
+      color: #333;
+      margin-top: 20px;
+      animation: fadeInText 2s 3.5s forwards;
+      transition: all 0.3s ease-in-out;
+    }
+
+    @keyframes fadeInText {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    .details {
+      opacity: 0;
+      margin-top: 30px;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      width: 80%;
+      max-width: 800px;
+      animation: fadeInDetails 3s 4s forwards;
+      background-image: linear-gradient(145deg, #ffffff, #e2e2e2);
+      transition: all 0.3s ease-in-out;
+    }
+
+    .details:hover {
+      transform: scale(1.01);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    @keyframes fadeInDetails {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    .details h2 {
+      font-size: 1.8rem;
+      color: #007bff;
+      margin-bottom: 10px;
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 5px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    .details p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f9f9f9;
+      padding: 10px 15px;
+      border-radius: 8px;
+      box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.1);
+      margin-bottom: 12px;
+      transition: transform 0.2s;
+    }
+
+    .details p:hover {
+      transform: translateX(5px);
+    }
+
+    .cta-button {
+      margin-top: 40px;
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      background-color: #000000;
+      color: #fff;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.3s, color 0.3s, letter-spacing 0.3s;
+    }
+
+    .cta-button:hover {
+      background-color: #ffffff;
+      color: #000000;
+      letter-spacing: 1px;
+    }
+
+    .dark-toggle {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      padding: 10px 25px;
+      font-size: 1rem;
+      font-weight: bold;
+      background-color: #444;
+      color: #fff;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s, transform 0.2s;
+      z-index: 1000;
+    }
+
+    .dark-toggle:hover {
+      background-color: #666;
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 768px) {
+      .circle {
+        width: 300px;
+        height: 300px;
+      }
+
+      .intro-text {
+        font-size: 1.8rem;
+      }
+
+      .cta-button {
+        font-size: 1rem;
+        padding: 12px 24px;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .intro-text h5 {
+        font-size: 1.2rem;
+      }
+
+      .details p {
+        font-size: 1rem;
+      }
+    }
+
+    /* DARK MODE STYLES */
+    .dark-mode {
+      background-color: #121212;
+      color: #e0e0e0;
+    }
+
+    .dark-mode .intro-text {
+      color: #c8c8ff;
+    }
+
+    .dark-mode .details {
+      background-image: linear-gradient(145deg, #1f1f2f, #151520);
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
+    }
+
+    .dark-mode .details h2 {
+      color: #72aaff;
+      border-color: #444;
+      text-shadow: 1px 1px 2px rgba(114, 170, 255, 0.2);
+    }
+
+    .dark-mode .details p {
+      background-color: #2a2a3a;
+      color: #ddd;
+      box-shadow: 1px 2px 6px rgba(255, 255, 255, 0.05);
+    }
+
+    .dark-mode .cta-button {
+      background-color: #72aaff;
+      color: #121212;
+    }
+
+    .dark-mode .cta-button:hover {
+      background-color: #ffffff;
+      color: #007bff;
+    }
+
+    .dark-mode .dark-toggle {
+      background-color: #333;
+      color: #fff;
+    }
+
+    .dark-mode .dark-toggle:hover {
+      background-color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="circle">
+    <img src="1.jpg" alt="Yamini" class="profile-pic">
+  </div>
+
+  <div class="intro-text">
+    <h5>Welcome to my personal page!</h5>
+    <h5>Here's a little about me.</h5>
+  </div>
+  <div class="details">
+    <h2>About Me</h2><br>
+    <h6>Hi, I'm Yamini, a passionate developer focused on solving problems with code. I love working with Python and building web applications. <br>Feel free to explore my projects and get in touch!</h6><br>
+    <h2>Hobbies</h2><br>
+    <p>Coding and exploring new technologies</p>
+    <p>Reading books on tech and self-improvement</p>
+    <p>Listening to music and attending live shows</p>
+    <p>Outdoor activities like Gaming and nature walks</p>
+    <br><br>
+    <a href="myresume.html" class="cta-button">Know Some More</a>
+  </div>
+  <button class="dark-toggle" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+    }
+  </script>
+</body>
+</html>

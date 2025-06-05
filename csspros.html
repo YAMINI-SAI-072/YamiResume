@@ -1,0 +1,190 @@
+<html>
+<head>
+  <title>CSS Projects Showcase</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    section {
+      margin: 40px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      max-width: 800px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .animated-bg {
+      height: 200px;
+      background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab, #9b59b6, #f39c12, #1abc9c, #2ecc71);
+      background-size: 800% 800%;
+      animation: gradientBG 20s ease infinite;
+      border-radius: 10px;
+    }
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .fancy-button {
+      padding: 15px 30px;
+      background: #3498db;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .fancy-button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 15px #3498db;
+    }
+
+    .profile-card {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      background: #fafafa;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .profile-card img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+    }
+    .profile-card .info {
+      font-size: 1em;
+    }
+
+    .contact-button {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 8px 16px;
+      background-color: #2980b9;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 0.9em;
+      transition: background 0.3s ease;
+    }
+    .contact-button:hover {
+      background-color: #1c5980;
+    }
+
+    .clock {
+      width: 150px;
+      height: 150px;
+      border: 8px solid #333;
+      border-radius: 50%;
+      margin: auto;
+      position: relative;
+    }
+    .hand {
+      position: absolute;
+      width: 50%;
+      height: 2px;
+      background: black;
+      top: 50%;
+      left: 50%;
+      transform-origin: 0% 50%;
+      transform: rotate(90deg);
+    }
+    .hand.hour { animation: rotateHour 43200s linear infinite; }
+    .hand.min { animation: rotateMin 3600s linear infinite; }
+    .hand.sec { background: red; animation: rotateSec 60s linear infinite; }
+    @keyframes rotateHour { to { transform: rotate(450deg); } }
+    @keyframes rotateMin { to { transform: rotate(450deg); } }
+    @keyframes rotateSec { to { transform: rotate(450deg); } }
+
+    .modal-checkbox {
+      display: none;
+    }
+    .modal-btn {
+      padding: 10px 20px;
+      background: #27ae60;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      max-width: 400px;
+      text-align: center;
+    }
+    .modal-checkbox:checked ~ .modal {
+      display: flex;
+    }
+  </style>
+</head>
+<body>
+  <h1>CSS Projects Showcase</h1>
+
+  <section>
+    <h2>1. Animated Gradient Background</h2>
+    <div class="animated-bg"></div>
+  </section>
+
+  <section>
+    <h2>2. CSS Button Hover Effects</h2>
+    <button class="fancy-button">Hover Me</button>
+  </section>
+
+  <section>
+    <h2>3. Profile Card UI</h2>
+    <div class="profile-card">
+      <img src="1.jpg" alt="Avatar">
+      <div class="info">
+        <strong>Yamini Padavala</strong><br>
+        Web Developer<br>
+        <a href="portfolio.html" class="contact-button">Contact</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>4. Pure CSS Clock</h2>
+    <div class="clock">
+      <div class="hand hour"></div>
+      <div class="hand min"></div>
+      <div class="hand sec"></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>5. CSS-only Modal</h2>
+    <input type="checkbox" id="modal-toggle" class="modal-checkbox">
+    <label for="modal-toggle" class="modal-btn">Open Modal</label>
+    <div class="modal">
+      <div class="modal-content">
+        <h3>Hello!</h3>
+        <p>This is a CSS-only modal popup.</p>
+        <label for="modal-toggle" class="contact-button" style="margin-top: 20px;">Close</label>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

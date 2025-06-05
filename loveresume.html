@@ -1,0 +1,302 @@
+<html>
+<head>
+  <title>My Resume Website</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="script.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(120deg, #f6f9fc, #e9eff5);
+      margin: 0;
+      padding: 0;
+      transition: background 0.5s ease, color 0.5s ease;
+    }
+
+    .dark-mode {
+      background: #1e1e2f;
+      color: #f5f5f5;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 40px 20px;
+      background: white;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      border-radius: 20px;
+      margin-top: 60px;
+    }
+
+    .dark-mode .container {
+      background: #2c2c3e;
+      box-shadow: 0 8px 16px rgba(255,255,255,0.05);
+    }
+
+    .header-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .name {
+      font-size: 3em;
+      color: #2c3e50;
+      margin: 10px 0 5px;
+    }
+
+    .dark-mode .name {
+      color: #ffffff;
+    }
+
+    .tagline {
+      font-size: 1.2em;
+      color: #7f8c8d;
+      margin: 0;
+    }
+
+    .dark-mode .tagline {
+      color: #ccc;
+    }
+
+    .profile-pic {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      border: 4px solid #121212;
+      object-fit: cover;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+
+    .section-title {
+      font-size: 2.2em;
+      color: #34495e;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .dark-mode .section-title {
+      color: #f5f5f5;
+    }
+
+    .edu-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .edu-buttons button {
+      background: #2980b9;
+      color: #fff;
+      padding: 14px 28px;
+      font-size: 1em;
+      border: none;
+      border-radius: 10px;
+      transition: 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      cursor: pointer;
+    }
+
+    .edu-buttons button:hover {
+      background: #1f618d;
+    }
+
+    .dark-mode .edu-buttons button {
+      background: #34495e;
+    }
+
+    .dark-mode .edu-buttons button:hover {
+      background: #5d6d7e;
+    }
+
+    .dark-toggle, .skills-section, .contact-section, .projects-section {
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    .dark-toggle button {
+      background: #555;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .dark-toggle button:hover {
+      background: #333;
+    }
+
+    .skills-list {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    .skills-list span {
+      background: #ecf0f1;
+      color: #2c3e50;
+      padding: 10px 15px;
+      border-radius: 20px;
+      font-size: 0.95em;
+    }
+
+    .dark-mode .skills-list span {
+      background: #3a3a4f;
+      color: #f0f0f0;
+    }
+
+    .projects-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .project-card {
+      background: #ecf0f1;
+      padding: 20px;
+      border-radius: 12px;
+      max-width: 300px;
+      text-align: left;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .dark-mode .project-card {
+      background: #3a3a4f;
+      color: #fff;
+    }
+
+    .contact-section input, .contact-section textarea {
+      width: 80%;
+      max-width: 500px;
+      margin: 10px auto;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      display: block;
+    }
+
+    .contact-section button {
+      margin-top: 10px;
+      padding: 10px 25px;
+      background-color: #27ae60;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .contact-section button:hover {
+      background-color: #1e8449;
+    }
+.contact-info {
+  margin-bottom: 20px;
+  font-size: 1.1em;
+  line-height: 1.6;
+  color: #2c3e50;
+}
+
+.contact-info a {
+  color: #2980b9;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-info a:hover {
+  color: #1e598b;
+  text-decoration: underline;
+}
+
+.dark-mode .contact-info {
+  color: #ddd;
+}
+
+.dark-mode .contact-info a {
+  color: #85c1e9;
+}
+
+.dark-mode .contact-info a:hover {
+  color: #5dade2;
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="header-content">
+        <img src="2.jpg" alt="Profile Photo" class="profile-pic">
+        <h1 class="name">Ramisetti Mokshendra Sai Pavan</h1>
+        <p class="tagline">Aspiring Engineer | Passionate Learner | Tech Enthusiast</p>
+      </div>
+    </header>
+
+    <section class="education-section">
+      <h2 class="section-title">Education</h2>
+      <div class="edu-buttons">
+        <button onclick="showAlert('10th')">10th</button>
+        <button onclick="showAlert('Diploma')">Diploma</button>
+        <button onclick="showAlert('B.Tech')">B.Tech</button>
+      </div>
+    </section>
+
+    <section class="skills-section">
+      <h2 class="section-title">Skills</h2>
+      <div class="skills-list">
+        <span>HTML</span>
+        <span>CSS</span>
+        <span>JavaScript</span>
+        <span>Python</span>
+        <span>Problem Solving</span>
+      </div>
+    </section>
+
+    <section class="projects-section">
+      <h2 class="section-title">Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <h3>Portfolio Website</h3>
+          <p>A responsive site to showcase my work, built with HTML, CSS, and JavaScript.</p>
+        </div>
+        <div class="project-card">
+          <h3>Calculator App</h3>
+          <p>A simple calculator built using HTML, CSS, and JavaScript for basic arithmetic operations.</p>
+        </div>
+        <div class="project-card">
+          <h3>Student Management System</h3>
+          <p>A Python-based tool to manage student records using file handling and Tkinter.</p>
+        </div>
+      </div>
+    </section>
+
+<h2 class="section-title">Contact Me</h2>
+<div class="contact-info">
+<p><i class="fas fa-envelope"></i>    <a href="mailto:mokshendraramisetti5729@gmail.com">mokshendraramisetti5729@gmail.com</a></p>
+<p><i class="fas fa-phone"></i>    <a href="tel:+91 7780523941"``>+91 7780523941</a></p>
+<p><i class="fab fa-linkedin"></i>    <a href="https://linkedin.com/in/your-profile" target="_blank">linkedin.com/in/your-profile</a></p>
+
+</div>
+    <div class="dark-toggle">
+      <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
+    </div>
+  </div>
+
+  <script>
+    function showAlert(level) {
+      alert("Redirecting to your " + level + " certificate page.");
+      window.location.href = level.toLowerCase() + ".html";
+    }
+
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factorial Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #result {
+            font-weight: bold;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Factorial Calculator</h1>
+    <input type="number" id="num" placeholder="Enter a number">
+    <button onclick="calculateFactorial()">Calculate Factorial</button>
+    <p id="result"></p>
+
+    <script>
+        function factorial(n) {
+            console.log(`Calculating factorial for ${n}`);
+            if (n < 0) {
+                throw new Error("Factorial is not defined for negative numbers");
+            }
+            let result = 1;
+            for (let i = 2; i <= n; i++) {
+                result *= i;
+            }
+            console.log(`Factorial result: ${result}`);
+            return result;
+        }
+
+        function calculateFactorial() {
+            try {
+                let num = parseInt(document.getElementById("num").value);
+                console.log(`Input value: ${num}`);
+                if (isNaN(num)) {
+                    throw new Error("Invalid input. Please enter a valid number.");
+                }
+                let result = factorial(num);
+                document.getElementById("result").innerText = `The factorial of ${num} is: ${result}`;
+            } catch (error) {
+                console.error(error);
+                document.getElementById("result").innerText = error.message;
+            }
+        }
+    </script>
+</body>
+</html>
