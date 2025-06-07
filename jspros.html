@@ -16,6 +16,7 @@
     h1 {
       margin-top: 20px;
       color: #2c3e50;
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.1);
     }
     nav {
       display: flex;
@@ -31,9 +32,14 @@
       background: #3498db;
       color: white;
       cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s ease;
     }
     nav button.active {
       background: #2980b9;
+    }
+    nav button:hover {
+      background: #1d6ea1;
     }
     .project {
       display: none;
@@ -41,12 +47,20 @@
       padding: 20px;
       border-radius: 10px;
       width: 90%;
-      max-width: 500px;
+      max-width: 600px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       margin-bottom: 30px;
+      transition: transform 0.3s ease;
     }
     .project.active {
       display: block;
+      transform: translateY(0);
+    }
+    .project:hover {
+      transform: translateY(-5px);
+    }
+    .project h2 {
+      color: #2980b9;
     }
     input, button, select, textarea {
       width: 100%;
@@ -61,6 +75,16 @@
     }
     ul { padding: 0; list-style: none; }
     li { background: #f0f0f0; padding: 8px; margin-bottom: 5px; border-radius: 4px; display: flex; justify-content: space-between; }
+    #weatherInfo {
+      margin-top: 15px;
+      padding: 10px;
+      background: #ecf0f1;
+      border-radius: 5px;
+    }
+    .project-description {
+      font-size: 14px;
+      color: #7f8c8d;
+    }
   </style>
 </head>
 <body>
@@ -71,24 +95,79 @@
   <button onclick="showProject('todo')" class="active">To-Do List</button>
   <button onclick="showProject('weather')">Weather App</button>
   <button onclick="showProject('quiz')">Quiz App</button>
+  <button onclick="showProject('calculator')">Calculator</button>
+  <button onclick="showProject('portfolio')">Portfolio Website</button>
+  <button onclick="showProject('tipcalculator')">Tip Calculator</button>
 </nav>
 
 <div id="todo" class="project active">
   <h2>To-Do List</h2>
+  <p class="project-description">Manage your tasks with this simple To-Do List app. Click <a href="todo.html" target="_blank">here</a> to visit the full page.</p>
   <input type="text" id="taskInput" placeholder="Add a new task">
   <ul id="taskList"></ul>
 </div>
 
 <div id="weather" class="project">
   <h2>Weather Dashboard</h2>
+  <p class="project-description">Get the current weather of your city using OpenWeather API.</p>
   <input type="text" id="cityInput" placeholder="Enter city name">
   <button onclick="getWeather()">Get Weather</button>
-  <div id="weatherInfo" style="margin-top: 15px;"></div>
+  <div id="weatherInfo"></div>
 </div>
 
 <div id="quiz" class="project">
   <h2>Quiz App</h2>
+  <p class="project-description">Test your knowledge with this interactive quiz app. Try to get the highest score!</p>
   <div id="quiz-container"></div>
+</div>
+
+<div id="calculator" class="project">
+  <h2>Calculator App</h2>
+  <p class="project-description">Perform basic arithmetic operations with this sleek and simple calculator.</p>
+  <div id="calculator-container">
+    <input type="text" id="calcInput" disabled>
+    <div>
+      <button onclick="calcInputValue(7)">7</button>
+      <button onclick="calcInputValue(8)">8</button>
+      <button onclick="calcInputValue(9)">9</button>
+      <button onclick="calcInputValue('+')">+</button>
+    </div>
+    <div>
+      <button onclick="calcInputValue(4)">4</button>
+      <button onclick="calcInputValue(5)">5</button>
+      <button onclick="calcInputValue(6)">6</button>
+      <button onclick="calcInputValue('-')">-</button>
+    </div>
+    <div>
+      <button onclick="calcInputValue(1)">1</button>
+      <button onclick="calcInputValue(2)">2</button>
+      <button onclick="calcInputValue(3)">3</button>
+      <button onclick="calcInputValue('*')">*</button>
+    </div>
+    <div>
+      <button onclick="calcInputValue(0)">0</button>
+      <button onclick="calcInputValue('.')">.</button>
+      <button onclick="clearCalc()">C</button>
+      <button onclick="calculateResult()">=</button>
+    </div>
+  </div>
+</div>
+
+<div id="portfolio" class="project">
+  <h2>Portfolio Website</h2>
+  <p class="project-description">Showcase your skills and work with a personal portfolio website.</p>
+  <div>
+    <button onclick="window.open('https://www.yourportfolio.com')">Visit My Portfolio</button>
+  </div>
+</div>
+
+<div id="tipcalculator" class="project">
+  <h2>Tip Calculator</h2>
+  <p class="project-description">Easily calculate tips based on the bill amount and desired tip percentage.</p>
+  <input type="number" id="billAmount" placeholder="Enter Bill Amount">
+  <input type="number" id="tipPercentage" placeholder="Enter Tip Percentage">
+  <button onclick="calculateTip()">Calculate Tip</button>
+  <div id="tipResult"></div>
 </div>
 
 <script>
@@ -160,49 +239,31 @@
     }
   }
 
-  // Quiz App Logic
-  const quizContainer = document.getElementById('quiz-container');
-  const quizQuestions = [
-    {
-      question: "What is the capital of France?",
-      options: ["Berlin", "London", "Paris", "Rome"],
-      answer: "Paris"
-    },
-    {
-      question: "What does HTML stand for?",
-      options: ["HyperText Markup Language", "HighText Machine Language", "HyperTool Multi Language", "None of these"],
-      answer: "HyperText Markup Language"
-    },
-    {
-      question: "Which language runs in a web browser?",
-      options: ["Java", "C", "Python", "JavaScript"],
-      answer: "JavaScript"
-    }
-  ];
-
-  let currentQuiz = 0;
-  let score = 0;
-
-  function loadQuiz() {
-    if (currentQuiz >= quizQuestions.length) {
-      quizContainer.innerHTML = `<h3>Your Score: ${score}/${quizQuestions.length}</h3>`;
-      return;
-    }
-    const q = quizQuestions[currentQuiz];
-    quizContainer.innerHTML = `
-      <p><strong>${q.question}</strong></p>
-      ${q.options.map(opt => `<button onclick="checkAnswer('${opt}')">${opt}</button>`).join("<br><br>")}
-    `;
+  // Calculator Logic
+  function calcInputValue(value) {
+    document.getElementById('calcInput').value += value;
   }
 
-  function checkAnswer(selected) {
-    const correct = quizQuestions[currentQuiz].answer;
-    if (selected === correct) score++;
-    currentQuiz++;
-    loadQuiz();
+  function clearCalc() {
+    document.getElementById('calcInput').value = '';
   }
 
-  loadQuiz();
+  function calculateResult() {
+    try {
+      const result = eval(document.getElementById('calcInput').value);
+      document.getElementById('calcInput').value = result;
+    } catch (e) {
+      document.getElementById('calcInput').value = 'Error';
+    }
+  }
+
+  // Tip Calculator Logic
+  function calculateTip() {
+    const billAmount = parseFloat(document.getElementById('billAmount').value);
+    const tipPercentage = parseFloat(document.getElementById('tipPercentage').value);
+    const tipAmount = billAmount * (tipPercentage / 100);
+    document.getElementById('tipResult').innerHTML = `Tip: $${tipAmount.toFixed(2)}`;
+  }
 </script>
 
 </body>
