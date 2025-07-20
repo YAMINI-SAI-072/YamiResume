@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
   <title>My Resume Website</title>
@@ -207,65 +208,64 @@
       overflow: hidden;
     }
 
-.falling-shapes span {
-  position: absolute;
-  display: block;
-  font-size: calc(1.2em + 0.4vw);
-  animation: fall linear infinite;
+    .falling-shapes span {
+      position: absolute;
+      display: block;
+      font-size: calc(1.2em + 0.4vw);
+      animation: fall linear infinite;
+      z-index: 0;
+      opacity: 0; 
+    }
 
-  z-index: 0;
-  opacity: 0; 
-}
+    .dark-mode .falling-shapes span {
+      color: rgba(255, 255, 255, 0.15);
+    }
 
-.dark-mode .falling-shapes span {
-  color: rgba(255, 255, 255, 0.15);
-}
-
-@keyframes fall {
-  0% {
-    transform: translateY(-100px) rotate(0deg);
-    opacity: 1; 
-  }
-  100% {
-    transform: translateY(100vh) rotate(360deg);
-    opacity: 0;
-  }
-}
+    @keyframes fall {
+      0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 1; 
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
   </style>
 </head>
 <body>
-  <audio controls autoplay muted>
-  <source src="peace.ogg" type="audio/ogg">
-  <source src="peace.mp3" type="audio/mpeg">
+<audio controls autoplay>
+  <source src="song.mp3" type="audio/mpeg">
 Your browser does not support the audio element.
 </audio>
-  <div class="falling-shapes">
-<span style="left:10%;  animation-duration: 10s; animation-delay: 0s;">★</span>
-<span style="left:20%;  animation-duration: 12s; animation-delay: 1s;">☆</span>
-<span style="left:30%;  animation-duration: 14s; animation-delay: 2s;">✿</span>
-<span style="left:40%;  animation-duration: 9s;  animation-delay: 0.5s;">⚙️</span>
-<span style="left:50%;  animation-duration: 11s; animation-delay: 1.5s;">⚡</span>
-<span style="left:60%;  animation-duration: 13s; animation-delay: 2.5s;">❤</span>
-<span style="left:70%;  animation-duration: 15s; animation-delay: 0.3s;">☀</span>
-<span style="left:80%;  animation-duration: 16s; animation-delay: 1.8s;">✔</span>
-<span style="left:90%;  animation-duration: 18s; animation-delay: 2.2s;">☁</span>
-<span style="left:95%;  animation-duration: 20s; animation-delay: 0.7s;">☎</span>
-<span style="left:5%;   animation-duration: 22s; animation-delay: 2.7s;">⚽</span>
-<span style="left:15%;  animation-duration: 24s; animation-delay: 1.1s;">✈</span>
-<span style="left:25%;  animation-duration: 13s; animation-delay: 0.4s;">☘</span>
-<span style="left:35%;  animation-duration: 17s; animation-delay: 2.9s;">🌸</span>
-<span style="left:45%;  animation-duration: 19s; animation-delay: 1.3s;">🎯</span>
-<span style="left:55%;  animation-duration: 21s; animation-delay: 0.6s;">🎶</span>
-<span style="left:65%;  animation-duration: 23s; animation-delay: 2.3s;">📌</span>
-<span style="left:75%;  animation-duration: 25s; animation-delay: 1.6s;">🧩</span>
-<span style="left:85%;  animation-duration: 26s; animation-delay: 3s;">🔔</span>
-<span style="left:95%;  animation-duration: 28s; animation-delay: 1.2s;">🔑</span>
-<span style="left:12%;  animation-duration: 17s; animation-delay: 0.8s;">🪐</span>
-<span style="left:27%;  animation-duration: 29s; animation-delay: 2s;">🔮</span>
-<span style="left:33%;  animation-duration: 15s; animation-delay: 1.4s;">🌟</span>
-<span style="left:48%;  animation-duration: 32s; animation-delay: 2.6s;">🧲</span>
 
-</div>
+  <div class="falling-shapes">
+    <span style="left:10%;  animation-duration: 10s; animation-delay: 0s;">★</span>
+    <span style="left:20%;  animation-duration: 12s; animation-delay: 1s;">☆</span>
+    <span style="left:30%;  animation-duration: 14s; animation-delay: 2s;">✿</span>
+    <span style="left:40%;  animation-duration: 9s;  animation-delay: 0.5s;">⚙️</span>
+    <span style="left:50%;  animation-duration: 11s; animation-delay: 1.5s;">⚡</span>
+    <span style="left:60%;  animation-duration: 13s; animation-delay: 2.5s;">❤</span>
+    <span style="left:70%;  animation-duration: 15s; animation-delay: 0.3s;">☀</span>
+    <span style="left:80%;  animation-duration: 16s; animation-delay: 1.8s;">✔</span>
+    <span style="left:90%;  animation-duration: 18s; animation-delay: 2.2s;">☁</span>
+    <span style="left:95%;  animation-duration: 20s; animation-delay: 0.7s;">☎</span>
+    <span style="left:5%;   animation-duration: 22s; animation-delay: 2.7s;">⚽</span>
+    <span style="left:15%;  animation-duration: 24s; animation-delay: 1.1s;">✈</span>
+    <span style="left:25%;  animation-duration: 13s; animation-delay: 0.4s;">☘</span>
+    <span style="left:35%;  animation-duration: 17s; animation-delay: 2.9s;">🌸</span>
+    <span style="left:45%;  animation-duration: 19s; animation-delay: 1.3s;">🎯</span>
+    <span style="left:55%;  animation-duration: 21s; animation-delay: 0.6s;">🎶</span>
+    <span style="left:65%;  animation-duration: 23s; animation-delay: 2.3s;">📌</span>
+    <span style="left:75%;  animation-duration: 25s; animation-delay: 1.6s;">🧩</span>
+    <span style="left:85%;  animation-duration: 26s; animation-delay: 3s;">🔔</span>
+    <span style="left:95%;  animation-duration: 28s; animation-delay: 1.2s;">🔑</span>
+    <span style="left:12%;  animation-duration: 17s; animation-delay: 0.8s;">🪐</span>
+    <span style="left:27%;  animation-duration: 29s; animation-delay: 2s;">🔮</span>
+    <span style="left:33%;  animation-duration: 15s; animation-delay: 1.4s;">🌟</span>
+    <span style="left:48%;  animation-duration: 32s; animation-delay: 2.6s;">🧲</span>
+  </div>
+
   <div class="container">
     <header class="header">
       <div class="header-content">
@@ -315,6 +315,7 @@ Your browser does not support the audio element.
     function toggleDarkMode() {
       document.body.classList.toggle("dark-mode");
     }
-  </script><br><br>
+  </script>
+
 </body>
 </html>
