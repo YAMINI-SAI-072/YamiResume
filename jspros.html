@@ -1,244 +1,227 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>JavaScript Project Portfolio</title>
-    <style>
+  <title>My Project Gallery</title>
+  <style>
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      background: #eef1f5;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #e0f7fa, #ffffff);
     }
     h1 {
+      text-align: center;
       margin-top: 20px;
-      color: #2c3e50;
-      text-shadow: 1px 1px 5px rgba(0,0,0,0.1);
+      color: #0277bd;
     }
-    nav {
+    .grid {
       display: flex;
-      gap: 10px;
-      margin: 20px;
       flex-wrap: wrap;
       justify-content: center;
-    }
-    nav button {
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      background: #3498db;
-      color: white;
-      cursor: pointer;
-      font-weight: bold;
-      transition: background 0.3s ease;
-    }
-    nav button.active {
-      background: #2980b9;
-    }
-    nav button:hover {
-      background: #1d6ea1;
-    }
-    .project {
-      display: none;
-      background: white;
+      gap: 15px;
       padding: 20px;
+    }
+    .card {
+      background: #fff;
+      padding: 15px;
       border-radius: 10px;
-      width: 90%;
-      max-width: 600px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      margin-bottom: 30px;
-      transition: transform 0.3s ease;
+      width: 200px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: transform 0.3s;
     }
-    .project.active {
-      display: block;
-      transform: translateY(0);
+    .card:hover {
+      transform: scale(1.05);
+      background-color: #e0f2f1;
     }
-    .project:hover {
-      transform: translateY(-5px);
+    .modal, #modalOverlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
     }
-    .project h2 {
-      color: #2980b9;
+    #modalOverlay {
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 100;
     }
-    input, button, select, textarea {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      font-size: 16px;
-      border-radius: 5px;
+    .modal {
+      background: #fff;
+      width: 80%;
+      max-width: 500px;
+      margin: 100px auto;
+      padding: 20px;
+      border-radius: 12px;
+      z-index: 101;
+      position: relative;
+    }
+    input, button, select {
+      padding: 6px;
+      margin: 5px 0;
+      border-radius: 6px;
       border: 1px solid #ccc;
+      width: 100%;
+      box-sizing: border-box;
     }
-    button:hover {
-      opacity: 0.9;
+    button {
+      background-color: #27F5E7;
+      border: none;
+      cursor: pointer;
     }
-    ul { padding: 0; list-style: none; }
-    li { background: #f0f0f0; padding: 8px; margin-bottom: 5px; border-radius: 4px; display: flex; justify-content: space-between; }
-    #weatherInfo {
-      margin-top: 15px;
-      padding: 10px;
-      background: #ecf0f1;
-      border-radius: 5px;
-    }
-    .project-description {
-      font-size: 14px;
-      color: #7f8c8d;
+    ul {
+      padding-left: 20px;
     }
   </style>
 </head>
 <body>
-
-<h1>My JavaScript Projects</h1>
-
-<nav>
-  <button onclick="showProject('todo')" class="active">To-Do List</button>
-  <button onclick="showProject('weather')">Weather App</button>
-  <button onclick="showProject('quiz')">Quiz App</button>
-  <button onclick="showProject('calculator')">Calculator</button>
-  <button onclick="showProject('portfolio')">Portfolio Website</button>
-  <button onclick="showProject('tipcalculator')">Tip Calculator</button>
-</nav>
-
-<div id="todo" class="project active">
-  <h2>To-Do List</h2>
-  <p class="project-description">Manage your tasks with this simple To-Do List app. Click <a href="todo.html" target="_blank">here</a> to visit the full page.</p>
-  <input type="text" id="taskInput" placeholder="Add a new task">
-  <ul id="taskList"></ul>
-</div>
-
-<div id="weather" class="project">
-  <h2>Weather Dashboard</h2>
-  <p class="project-description">Get the current weather of your city using OpenWeather API.</p>
-  <input type="text" id="cityInput" placeholder="Enter city name">
-  <button onclick="getWeather()">Get Weather</button>
-  <div id="weatherInfo"></div>
-</div>
-
-<div id="quiz" class="project">
-  <h2>Quiz App</h2>
-  <p class="project-description">Test your knowledge with this interactive quiz app. Try to get the highest score!</p>
-  <div id="quiz-container"></div>
-</div>
-
-<div id="calculator" class="project">
-  <h2>Calculator App</h2>
-  <p class="project-description">Perform basic arithmetic operations with this sleek and simple calculator.</p>
-  <div id="calculator-container">
- <p class="project-description">. Click <a href="todo.html" target="_blank">here</a> to visit the calculator page.</p>
+  <h1>🌟 My Project Showcase 🌟</h1>
+  <div class="grid">
+    <div class="card" data-title="To-Do List">📝 To-Do List</div>
+    <div class="card" data-title="Calculator">🧮 Calculator</div>
+    <div class="card" data-title="Currency Converter">💱 Currency Converter</div>
+    <div class="card" data-title="Quiz App">❓ Quiz App</div>
+    <div class="card" data-title="Alarm Clock">⏰ Alarm Clock</div>
+    <!-- You can add more here -->
   </div>
-</div>
 
-<div id="portfolio" class="project">
-  <h2>Portfolio Website</h2>
-  <p class="project-description">Showcase your skills and work with a personal portfolio website.</p>
-  <div>
-    <button onclick="window.open('https://yamini-sai-072.github.io/YamiResume/portfolio.html')">Visit My Portfolio</button>
+  <div id="modalOverlay"></div>
+  <div class="modal" id="modal">
+    <h2 id="modalTitle"></h2>
+    <div id="modalContent"></div>
   </div>
-</div>
 
-<div id="tipcalculator" class="project">
-  <h2>Tip Calculator</h2>
-  <p class="project-description">Easily calculate tips based on the bill amount and desired tip percentage.</p>
-  <input type="number" id="billAmount" placeholder="Enter Bill Amount">
-  <input type="number" id="tipPercentage" placeholder="Enter Tip Percentage">
-  <button onclick="calculateTip()">Calculate Tip</button>
-  <div id="tipResult"></div>
-</div>
+  <script>
+    const modal = document.getElementById("modal");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalContent = document.getElementById("modalContent");
+    const modalOverlay = document.getElementById("modalOverlay");
+    const cards = document.querySelectorAll(".card");
 
-<script>
-  // Tab Navigation
-  function showProject(id) {
-    document.querySelectorAll('.project').forEach(div => div.classList.remove('active'));
-    document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
-    document.querySelector(`nav button[onclick="showProject('${id}')"]`).classList.add('active');
-  }
+    const projects = {
+      "To-Do List": `
+        <input type="text" id="todoInput" placeholder="Enter task">
+        <button onclick="addTask()">Add</button>
+        <ul id="todoList"></ul>
+      `,
+      "Calculator": `
+        <input type="number" id="num1" placeholder="Num1">
+        <input type="number" id="num2" placeholder="Num2">
+        <select id="operator">
+          <option value="+">+</option><option value="-">-</option>
+          <option value="*">*</option><option value="/">/</option>
+        </select>
+        <button onclick="calculate()">=</button>
+        <p>Result: <span id="calcResult"></span></p>
+      `,
+      "Currency Converter": `
+        <input type="number" id="inr" placeholder="Amount in INR">
+        <button onclick="convertCurrency()">Convert to USD</button>
+        <p>USD: <span id="usdAmount"></span></p>
+      `,
+      "Quiz App": `
+        <button onclick="startQuiz()">Start Quiz</button>
+        <div id="quizArea"></div>
+      `,
+      "Alarm Clock": `
+        <input type="number" id="alarmDelay" placeholder="Delay in seconds">
+        <button onclick="setAlarm()">Set Alarm</button>
+        <p id="alarmStatus"></p>
+      `
+    };
 
-  // To-Do List Logic
-  const taskInput = document.getElementById('taskInput');
-  const taskList = document.getElementById('taskList');
-
-  function loadTasks() {
-    const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-    taskList.innerHTML = '';
-    tasks.forEach((task, index) => {
-      const li = document.createElement('li');
-      li.innerHTML = `<span>${task}</span><button onclick="deleteTask(${index})">Delete</button>`;
-      taskList.appendChild(li);
+    cards.forEach(card => {
+      card.addEventListener("click", () => {
+        const title = card.dataset.title;
+        modalTitle.textContent = title;
+        modalContent.innerHTML = projects[title] || "<p>Coming soon...</p>";
+        modal.style.display = "block";
+        modalOverlay.style.display = "block";
+      });
     });
-  }
 
-  taskInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter' && taskInput.value.trim() !== '') {
-      const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-      tasks.push(taskInput.value.trim());
-      localStorage.setItem('tasks', JSON.stringify(tasks));
-      loadTasks();
-      taskInput.value = '';
-    }
-  });
+    modalOverlay.addEventListener("click", () => {
+      modal.style.display = "none";
+      modalOverlay.style.display = "none";
+    });
 
-  function deleteTask(index) {
-    const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-    tasks.splice(index, 1);
-    localStorage.setItem('tasks', JSON.stringify(tasks));
-    loadTasks();
-  }
-
-  loadTasks();
-
-  // Weather App Logic
-  async function getWeather() {
-    const city = document.getElementById('cityInput').value.trim();
-    const weatherInfo = document.getElementById('weatherInfo');
-    const apiKey = 'your_api_key_here'; // Replace with real API key
-    if (!city) {
-      weatherInfo.innerHTML = '<p>Please enter a city name.</p>';
-      return;
-    }
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-    try {
-      const res = await fetch(url);
-      const data = await res.json();
-      if (data.cod !== 200) {
-        throw new Error(data.message);
+    // TO-DO LIST
+    window.addTask = function () {
+      const input = document.getElementById("todoInput");
+      const task = input.value.trim();
+      if (task) {
+        const li = document.createElement("li");
+        li.textContent = task;
+        li.onclick = () => li.remove();
+        document.getElementById("todoList").appendChild(li);
+        input.value = "";
       }
-      weatherInfo.innerHTML = `
-        <p><strong>${data.name}, ${data.sys.country}</strong></p>
-        <p>Temperature: ${data.main.temp}°C</p>
-        <p>Weather: ${data.weather[0].main}</p>
-        <p>Humidity: ${data.main.humidity}%</p>
-      `;
-    } catch (err) {
-      weatherInfo.innerHTML = `<p>Error: ${err.message}</p>`;
-    }
-  }
+    };
 
-  // Calculator Logic
-  function calcInputValue(value) {
-    document.getElementById('calcInput').value += value;
-  }
+    // CALCULATOR
+    window.calculate = function () {
+      const n1 = parseFloat(document.getElementById("num1").value);
+      const n2 = parseFloat(document.getElementById("num2").value);
+      const op = document.getElementById("operator").value;
+      let result = "";
+      if (!isNaN(n1) && !isNaN(n2)) {
+        switch (op) {
+          case "+": result = n1 + n2; break;
+          case "-": result = n1 - n2; break;
+          case "*": result = n1 * n2; break;
+          case "/": result = n2 !== 0 ? n1 / n2 : "∞"; break;
+        }
+      }
+      document.getElementById("calcResult").textContent = result;
+    };
 
-  function clearCalc() {
-    document.getElementById('calcInput').value = '';
-  }
+    // CURRENCY CONVERTER
+    window.convertCurrency = function () {
+      const inr = parseFloat(document.getElementById("inr").value);
+      const usd = inr ? (inr / 83).toFixed(2) : 0;
+      document.getElementById("usdAmount").textContent = usd;
+    };
 
-  function calculateResult() {
-    try {
-      const result = eval(document.getElementById('calcInput').value);
-      document.getElementById('calcInput').value = result;
-    } catch (e) {
-      document.getElementById('calcInput').value = 'Error';
-    }
-  }
+    // QUIZ
+    window.startQuiz = function () {
+      const quiz = [
+        { q: "Capital of India?", a: "Delhi" },
+        { q: "5 + 7 = ?", a: "12" }
+      ];
+      let index = 0;
+      const area = document.getElementById("quizArea");
+      function render() {
+        if (index >= quiz.length) {
+          area.innerHTML = "<p>Quiz Completed ✅</p>";
+          return;
+        }
+        area.innerHTML = `
+          <p>${quiz[index].q}</p>
+          <input type="text" id="quizAns">
+          <button onclick="submitQuiz()">Submit</button>
+        `;
+      }
+      window.submitQuiz = function () {
+        const ans = document.getElementById("quizAns").value.trim().toLowerCase();
+        if (ans === quiz[index].a.toLowerCase()) {
+          alert("Correct ✅");
+        } else {
+          alert("Wrong ❌. Correct: " + quiz[index].a);
+        }
+        index++;
+        render();
+      };
+      render();
+    };
 
-  // Tip Calculator Logic
-  function calculateTip() {
-    const billAmount = parseFloat(document.getElementById('billAmount').value);
-    const tipPercentage = parseFloat(document.getElementById('tipPercentage').value);
-    const tipAmount = billAmount * (tipPercentage / 100);
-    document.getElementById('tipResult').innerHTML = `Tip: $${tipAmount.toFixed(2)}`;
-  }
-</script>
-
+    // ALARM
+    window.setAlarm = function () {
+      const delay = parseInt(document.getElementById("alarmDelay").value);
+      if (!isNaN(delay)) {
+        document.getElementById("alarmStatus").textContent = "Alarm set!";
+        setTimeout(() => {
+          alert("⏰ Time's up!");
+          document.getElementById("alarmStatus").textContent = "Alarm rang!";
+        }, delay * 1000);
+      }
+    };
+  </script>
 </body>
 </html>
