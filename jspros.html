@@ -96,21 +96,7 @@
     const cards = document.querySelectorAll(".card");
 
     const projects = {
-      "To-Do List": `
-        <input type="text" id="todoInput" placeholder="Enter task">
-        <button onclick="addTask()">Add</button>
-        <ul id="todoList"></ul>
-      `,
-      "Calculator": `
-        <input type="number" id="num1" placeholder="Num1">
-        <input type="number" id="num2" placeholder="Num2">
-        <select id="operator">
-          <option value="+">+</option><option value="-">-</option>
-          <option value="*">*</option><option value="/">/</option>
-        </select>
-        <button onclick="calculate()">=</button>
-        <p>Result: <span id="calcResult"></span></p>
-      `,
+     
       "Currency Converter": `
         <input type="number" id="inr" placeholder="Amount in INR">
         <button onclick="convertCurrency()">Convert to USD</button>
@@ -142,35 +128,7 @@
       modalOverlay.style.display = "none";
     });
 
-    // TO-DO LIST
-    window.addTask = function () {
-      const input = document.getElementById("todoInput");
-      const task = input.value.trim();
-      if (task) {
-        const li = document.createElement("li");
-        li.textContent = task;
-        li.onclick = () => li.remove();
-        document.getElementById("todoList").appendChild(li);
-        input.value = "";
-      }
-    };
-
-    // CALCULATOR
-    window.calculate = function () {
-      const n1 = parseFloat(document.getElementById("num1").value);
-      const n2 = parseFloat(document.getElementById("num2").value);
-      const op = document.getElementById("operator").value;
-      let result = "";
-      if (!isNaN(n1) && !isNaN(n2)) {
-        switch (op) {
-          case "+": result = n1 + n2; break;
-          case "-": result = n1 - n2; break;
-          case "*": result = n1 * n2; break;
-          case "/": result = n2 !== 0 ? n1 / n2 : "∞"; break;
-        }
-      }
-      document.getElementById("calcResult").textContent = result;
-    };
+   
 
     // CURRENCY CONVERTER
     window.convertCurrency = function () {
